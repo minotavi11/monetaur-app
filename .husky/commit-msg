@@ -1,0 +1,9 @@
+echo -ne "\e[93m❯\e[0m Checking commit message..."
+
+if OUTPUT=$(pnpm exec commitlint --edit "$1" --strict 2>&1); then
+    echo -e "\r\e[32m✔\e[0m Checking commit message... \033[K"
+else
+    echo -e "\r\e[31m✖\e[0m Checking commit message... \033[K"
+    echo "$OUTPUT"
+    exit 1
+fi
