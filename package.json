@@ -31,8 +31,12 @@
     "@commitlint/cli": "^21.2.3",
     "@commitlint/config-conventional": "^21.2.3",
     "@types/react": "~19.2.2",
+    "eslint": "^9.39.5",
+    "eslint-config-expo": "~57.0.2",
+    "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
     "lint-staged": "^17.6.0",
+    "prettier": "^3.9.9",
     "typescript": "~6.0.3"
   },
   "scripts": {
@@ -42,17 +46,16 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "prepare": "husky",
     "check-format": "prettier --check .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepare": "husky"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "npx eslint --fix"
+      "eslint --fix",
+      "prettier --write"
     ],
-    "*.{js,jsx,ts,tsx,json,css,md}": [
-      "npx prettier --write"
-    ]
+    "*.{json,css,md}": "prettier --write"
   },
   "private": true
 }
